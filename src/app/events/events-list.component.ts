@@ -20,9 +20,4 @@ export class EventListComponent {
             country: 'Gilead'
         }
     }
-
-    handleEventClicked(data: string) {
-        console.log("Received: " + data);
-    }
-
 }

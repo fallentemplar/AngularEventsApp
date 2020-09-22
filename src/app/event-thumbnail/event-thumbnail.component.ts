@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IEvent } from '../interfaces/IEvent'
 
 @Component({
@@ -7,9 +7,10 @@ import { IEvent } from '../interfaces/IEvent'
 })
 export class EventThumbailComponent {
     @Input() event: IEvent
-    @Output() eventClick = new EventEmitter();
 
-    handleClickMe() {
-        this.eventClick.emit(this.event.name);
+    someProperty: string = "some value";
+
+    logFoo() {
+        console.log("Foo");
     }
 }
