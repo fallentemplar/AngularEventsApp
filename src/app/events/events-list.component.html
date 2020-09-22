@@ -1,5 +1,5 @@
 <div>
     <h1>Upcoming Angular Events</h1>
     <hr>
-    <event-thumbnail [event]="eventList[0]"></event-thumbnail>
+    <event-thumbnail (eventClick)="handleEventClicked($event)" [event]="event1"></event-thumbnail>
 </div>

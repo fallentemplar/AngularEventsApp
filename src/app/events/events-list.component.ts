@@ -7,7 +7,7 @@ import { IEvent } from '../interfaces/IEvent';
     templateUrl: "./events-list.component.html"
 })
 export class EventListComponent {
-    eventList: IEvent[] = [{
+    event1: IEvent = {
         id: 1,
         name: 'Angular Connect',
         date: '22/09/2020',
@@ -19,21 +19,10 @@ export class EventListComponent {
             city: 'Springfield',
             country: 'Gilead'
         }
-    },
-    {
-        id: 2,
-        name: 'Angular Forever',
-        date: '22/09/2020',
-        time: '17:22 pm',
-        price: 1031.42,
-        imageUrl: 'assets/images/angularconnect-shield.png',
-        location: {
-            address: '2092 Evergreen Terrace',
-            city: 'Springfield',
-            country: 'Canada'
-        }
     }
 
-];
-    
+    handleEventClicked(data: string) {
+        console.log("Received: " + data);
+    }
+
 }
