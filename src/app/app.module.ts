@@ -22,8 +22,8 @@ import { RouterModule } from '@angular/router';
     NavBarComponent
   ],
   imports: [
-    BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    BrowserModule
   ],
   providers: [ //Services
     EventService,
