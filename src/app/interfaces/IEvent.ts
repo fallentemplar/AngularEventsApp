@@ -1,3 +1,5 @@
+import { ISession } from './ISession';
+
 export interface IEvent {
     id: number,
     name: string,
@@ -9,5 +11,6 @@ export interface IEvent {
         address: string,
         city: string,
         country: string
-    }
+    },
+    sessions: ISession[]
 }
