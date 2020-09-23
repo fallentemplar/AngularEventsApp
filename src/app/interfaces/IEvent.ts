@@ -12,5 +12,6 @@ export interface IEvent {
         city: string,
         country: string
     },
+    onlineUrl?: string,
     sessions: ISession[]
 }
