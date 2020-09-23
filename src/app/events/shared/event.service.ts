@@ -6,6 +6,10 @@ export class EventService {
     getEvents(): IEvent[] {
         return EVENTS;
     }
+
+    getEvent(eventId: number): IEvent {
+        return EVENTS.find(event => event.id === eventId);
+    }
 }
 
 const EVENTS: IEvent[] = [
