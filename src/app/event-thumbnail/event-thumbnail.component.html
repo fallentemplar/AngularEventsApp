@@ -5,7 +5,7 @@
     <div [class.green]="event?.time === '8:00 am'" [ngSwitch]="event?.time">
         Class binding
     -->
-    <div class="well" [ngClass]="getStartTimeClass()" [ngSwitch]="event?.time">
+    <div [ngClass]="getStartTimeClass()" [ngSwitch]="event?.time">
         Time: {{event?.time}}
         <span *ngSwitchCase="'8:00 am'">(Early start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late start)</span>
