@@ -4,12 +4,19 @@ import { AuthService } from './auth.service';
 
 @Component({
     selector: 'login',
-    templateUrl: './login.component.html'
+    templateUrl: './login.component.html',
+    styles: [
+        `
+        em{float:right; color:#e05c65; padding-left:10px}
+        `
+    ]
 })
 export class LoginComponent {
 
     userName: string;
     password: string;
+
+    mouseoverLogin: boolean;
 
     constructor(private authService: AuthService, private router: Router) {
 
@@ -21,7 +28,7 @@ export class LoginComponent {
         this.router.navigate(["/events"]);
     }
 
-    cancel(){
+    cancel() {
         this.router.navigate(["/events"]);
     }
 
