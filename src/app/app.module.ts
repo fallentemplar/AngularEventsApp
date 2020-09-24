@@ -4,14 +4,14 @@ import { RouterModule } from '@angular/router';
 
 import { EventsAppComponent } from './events-app.component';
 
-import { 
-  EventListComponent, 
-  EventThumbailComponent, 
-  EventDetailsComponent, 
-  CreateEventComponent, 
-  EventService, 
-  EventsListResolver, 
-  EventRouteActivator 
+import {
+  EventListComponent,
+  EventThumbailComponent,
+  EventDetailsComponent,
+  CreateEventComponent,
+  EventService,
+  EventsListResolver,
+  EventRouteActivator
 } from './events/index'
 
 import { Error404Component } from './errors/404.component'
@@ -19,6 +19,7 @@ import { NavBarComponent } from './nav/navbar.component'
 import { ToastrService } from './common/toastr.service';
 
 import { appRoutes } from './routes'
+import { AuthService } from './user';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { appRoutes } from './routes'
     ToastrService,
     EventRouteActivator,
     EventsListResolver,
+    AuthService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
