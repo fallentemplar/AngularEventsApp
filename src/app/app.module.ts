@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EventsAppComponent } from './events-app.component';
 
@@ -11,7 +12,7 @@ import {
   CreateEventComponent,
   EventService,
   EventsListResolver,
-  EventRouteActivator
+  EventRouteActivator, CreateSessionComponent
 } from './events/index'
 
 import { Error404Component } from './errors/404.component'
@@ -20,7 +21,7 @@ import { ToastrService } from './common/toastr.service';
 
 import { appRoutes } from './routes'
 import { AuthService } from './user';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EventThumbailComponent,
     CreateEventComponent,
     Error404Component,
+    CreateSessionComponent,
     NavBarComponent
   ],
   imports: [
