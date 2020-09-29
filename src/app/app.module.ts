@@ -12,7 +12,9 @@ import {
   CreateEventComponent,
   EventService,
   EventsListResolver,
-  EventRouteActivator, CreateSessionComponent
+  EventRouteActivator,
+  CreateSessionComponent,
+  SessionListComponent
 } from './events/index'
 
 import { Error404Component } from './errors/404.component'
@@ -32,7 +34,8 @@ import { AuthService } from './user';
     CreateEventComponent,
     Error404Component,
     CreateSessionComponent,
-    NavBarComponent
+    NavBarComponent,
+    SessionListComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

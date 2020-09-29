@@ -20,9 +20,14 @@ export class EventService {
         console.log(newEvent);
         EVENTS.push(newEvent);
     }
+
+    updateEvent(event: IEvent) {
+        let index = EVENTS.findIndex(x => x.id == event.id);
+        EVENTS[index] = event;
+    }
 }
 
-const EVENTS: IEvent[] = [
+let EVENTS: IEvent[] = [
     {
         id: 1,
         name: 'Angular Connect',
