@@ -20,6 +20,7 @@ import { ToastrService } from './common/toastr.service';
 
 import { appRoutes } from './routes'
 import { AuthService } from './user';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,9 @@ import { AuthService } from './user';
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ //Services
     EventService,
