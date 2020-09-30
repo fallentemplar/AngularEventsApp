@@ -4,7 +4,9 @@ import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EventsAppComponent } from './events-app.component';
-
+import { Error404Component } from './errors/404.component'
+import { NavBarComponent } from './nav/navbar.component'
+import { CollapsibleWellComponent, JQUERY_TOKEN, ModalTriggerDirective, SimpleModalComponent, Toastr, TOASTR_TOKEN } from './common';
 import {
   EventListComponent,
   EventThumbailComponent,
@@ -17,16 +19,11 @@ import {
   SessionListComponent,
   DurationPipe
 } from './events/index'
-
-import { Error404Component } from './errors/404.component'
-import { NavBarComponent } from './nav/navbar.component'
-import { Toastr, TOASTR_TOKEN } from './common/toastr.service';
-
 import { appRoutes } from './routes'
 import { AuthService } from './user';
-import { CollapsibleWellComponent } from './common';
 
-declare let toastr: Toastr;
+let toastr: Toastr = window['toastr'];
+let jQuery = window['$'];
 
 @NgModule({
   declarations: [
@@ -40,7 +37,9 @@ declare let toastr: Toastr;
     NavBarComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe
+    DurationPipe,
+    SimpleModalComponent,
+    ModalTriggerDirective
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -59,8 +58,10 @@ declare let toastr: Toastr;
     },
     {
       provide: TOASTR_TOKEN, useValue: toastr
+    },
+    {
+      provide: JQUERY_TOKEN, useValue: jQuery
     }
-
   ],
   bootstrap: [EventsAppComponent]
 })
