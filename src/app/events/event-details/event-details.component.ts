@@ -14,6 +14,7 @@ export class EventDetailsComponent implements OnInit {
 
     event: IEvent
     addMode: boolean
+    filterBy: string = 'all'
 
     constructor(private eventService: EventService, private router: Router, private route: ActivatedRoute) {
 
@@ -37,6 +38,10 @@ export class EventDetailsComponent implements OnInit {
 
     cancelAddSession(): void {
         this.addMode = false;
+    }
+
+    filter(selectedFilter: string) {
+
     }
 
 }
