@@ -14,7 +14,8 @@ import {
   EventsListResolver,
   EventRouteActivator,
   CreateSessionComponent,
-  SessionListComponent
+  SessionListComponent, 
+  DurationPipe
 } from './events/index'
 
 import { Error404Component } from './errors/404.component'
@@ -37,7 +38,8 @@ import { CollapsibleWellComponent } from './common';
     CreateSessionComponent,
     NavBarComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
