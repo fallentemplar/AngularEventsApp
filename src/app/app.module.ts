@@ -23,6 +23,7 @@ import { ToastrService } from './common/toastr.service';
 
 import { appRoutes } from './routes'
 import { AuthService } from './user';
+import { CollapsibleWellComponent } from './common';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AuthService } from './user';
     Error404Component,
     CreateSessionComponent,
     NavBarComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
