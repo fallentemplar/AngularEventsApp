@@ -17,10 +17,12 @@ import {
   EventRouteActivator,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent
 } from './events/index'
 import { appRoutes } from './routes'
 import { AuthService } from './user';
+import { VoterService } from './events/event-details/voter.service';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -39,7 +41,8 @@ let jQuery = window['$'];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -52,6 +55,7 @@ let jQuery = window['$'];
     EventRouteActivator,
     EventsListResolver,
     AuthService,
+    VoterService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
