@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 import { EventsAppComponent } from './events-app.component';
 import { Error404Component } from './errors/404.component'
@@ -49,7 +50,8 @@ let jQuery = window['$'];
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [ //Services
     EventService,
