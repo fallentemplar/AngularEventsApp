@@ -15,15 +15,11 @@ export class EventService {
             .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
     }
 
-    private handleError<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-            console.error(error);
-            return of(result as T);
-        }
-    }
 
-    getEvent(eventId: number): IEvent {
-        return EVENTS.find(event => event.id === eventId);
+
+    getEvent(eventId: number): Observable<IEvent> {
+        return this.http.get<IEvent>(`/api/events/${eventId}`)
+            .pipe(catchError(this.handleError<IEvent>('getEvent')));
     }
 
     saveEvent(newEvent: IEvent) {
@@ -38,6 +34,10 @@ export class EventService {
         EVENTS[index] = event;
     }
 
+    /**
+     * Searches in all the available events the sessions that match with the provided searchTerm
+     * @param searchTerm The term to use in the search
+     */
     searchSessions(searchTerm: string) {
         let term = searchTerm.toLocaleLowerCase();
         var results: ISession[] = []
@@ -57,6 +57,13 @@ export class EventService {
             emiter.emit(results);
         }, 200);
         return emiter;
+    }
+
+    private handleError<T>(operation = 'operation', result?: T) {
+        return (error: any): Observable<T> => {
+            console.error(error);
+            return of(result as T);
+        }
     }
 }
 

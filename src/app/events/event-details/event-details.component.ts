@@ -22,11 +22,12 @@ export class EventDetailsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        this.route.params.forEach((params: Params) => {
-            this.event = this.eventService.getEvent(Number(params['id']))
+        this.route.data.forEach((data: Params) => {
+            this.event = data['event'];
             this.addMode = false;
         });
     }
+
 
     addSession(): void {
         this.addMode = true
@@ -43,9 +44,4 @@ export class EventDetailsComponent implements OnInit {
     cancelAddSession(): void {
         this.addMode = false;
     }
-
-    filter(selectedFilter: string) {
-
-    }
-
 }

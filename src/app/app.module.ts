@@ -15,7 +15,8 @@ import {
   CreateEventComponent,
   EventService,
   EventsListResolver,
-  EventRouteActivator,
+  //EventRouteActivator,
+  EventResolver,
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
@@ -55,10 +56,11 @@ let jQuery = window['$'];
   ],
   providers: [ //Services
     EventService,
-    EventRouteActivator,
+    //EventRouteActivator,
     EventsListResolver,
     AuthService,
     VoterService,
+    EventResolver,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
