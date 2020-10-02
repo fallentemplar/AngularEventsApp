@@ -65,7 +65,9 @@
                 be a png or jpg url</em>
             <input (ngModel)="newEvent.imageUrl" name="imageUrl" required pattern=".*\/.*.(png|jpg)" id="imageUrl"
                 type="text" class="form-control" placeholder="url of image..." />
-            <img [src]="newEventForm.controls.imageUrl.value" *ngIf="newEventForm.controls.imageUrl?.valid" />
+            <img [src]="newEventForm.controls.imageUrl.value"
+                *ngIf="newEventForm.controls.imageUrl?.touched && newEventForm.controls.imageUrl?.valid"
+                alt="event-logo" />
         </div>
 
         <button type="submit" [disabled]="newEventForm.invalid" class="btn btn-primary">Save</button>
