@@ -18,7 +18,7 @@ import {
   CreateSessionComponent,
   SessionListComponent,
   DurationPipe,
-  UpvoteComponent
+  UpvoteComponent, LocationValidator
 } from './events/index'
 import { appRoutes } from './routes'
 import { AuthService } from './user';
@@ -42,7 +42,8 @@ let jQuery = window['$'];
     DurationPipe,
     SimpleModalComponent,
     ModalTriggerDirective,
-    UpvoteComponent
+    UpvoteComponent,
+    LocationValidator
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
