@@ -1,12 +1,14 @@
 import { DebugElement } from '@angular/core';
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
-import { By } from '@angular/platform-browser';
-import { CollapsibleWellComponent } from 'src/app/common';
 import { AuthService } from 'src/app/user';
 import { DurationPipe } from '../../shared';
-import { UpvoteComponent } from '../upvote.component';
 import { VoterService } from '../voter.service';
 import { SessionListComponent } from './session-list.component';
+
+//For create shallow integrated tests, we can create components in the same class
+//but if these are complicated, it is not viable
+//Or we can import NO_ERRORS_SCHEMA from @angular/core and add it in TestBed schemas
+
 
 describe('SessionListComponent', () => {
 
@@ -29,9 +31,9 @@ describe('SessionListComponent', () => {
             imports: [],
             declarations: [
                 SessionListComponent,
-                UpvoteComponent,
+                //UpvoteComponent,
                 DurationPipe,
-                CollapsibleWellComponent
+                //CollapsibleWellComponent
             ],
             providers: [
                 { provide: AuthService, useValue: mockAuthService },
