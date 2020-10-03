@@ -23,7 +23,6 @@ export class LoginComponent {
     }
     //hardcoded user: johnpapa pass: any password works
     login(formValues) {
-        console.log(formValues)
         this.authService.loginUser(formValues.userName, formValues.password).subscribe(response => {
             if (response)
                 this.router.navigate(["/events"]);
