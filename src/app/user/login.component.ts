@@ -15,17 +15,22 @@ export class LoginComponent {
 
     userName: string;
     password: string;
-
+    loginInvalid = false;
     mouseoverLogin: boolean;
 
     constructor(private authService: AuthService, private router: Router) {
 
     }
-
+    //hardcoded user: johnpapa pass: any password works
     login(formValues) {
         console.log(formValues)
-        this.authService.loginUser(formValues.userName, formValues.password);
-        this.router.navigate(["/events"]);
+        this.authService.loginUser(formValues.userName, formValues.password).subscribe(response => {
+            if (response)
+                this.router.navigate(["/events"]);
+            else
+                this.loginInvalid = true;
+        });
+
     }
 
     cancel() {
