@@ -1,13 +1,13 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { AuthService } from 'src/app/user';
 import { DurationPipe } from '../../shared';
 import { VoterService } from '../voter.service';
 import { SessionListComponent } from './session-list.component';
 
-//For create shallow integrated tests, we can create components in the same class
-//but if these are complicated, it is not viable
-//Or we can import NO_ERRORS_SCHEMA from @angular/core and add it in TestBed schemas
+// For create shallow integrated tests, we can create components in the same class
+// but if these are complicated, it is not viable
+// Or we can import NO_ERRORS_SCHEMA from @angular/core and add it in TestBed schemas
 
 
 describe('SessionListComponent', () => {
@@ -18,11 +18,11 @@ describe('SessionListComponent', () => {
     let debugEl: DebugElement;
 
     beforeEach(waitForAsync(() => {
-        let mockAuthService = {
+        const mockAuthService = {
             isAuthenticated: () => true,
             currentUser: { userName: 'alexisaguirre' }
         };
-        let mockVoterService = {
+        const mockVoterService = {
             userHasVoted: () => true
         };
 
@@ -31,9 +31,9 @@ describe('SessionListComponent', () => {
             imports: [],
             declarations: [
                 SessionListComponent,
-                //UpvoteComponent,
+                // UpvoteComponent,
                 DurationPipe,
-                //CollapsibleWellComponent
+                // CollapsibleWellComponent
             ],
             providers: [
                 { provide: AuthService, useValue: mockAuthService },
@@ -41,7 +41,7 @@ describe('SessionListComponent', () => {
             ],
             schemas: []
         });
-    }))
+    }));
 
     beforeEach(() => {
         fixture = TestBed.createComponent(SessionListComponent);
@@ -56,7 +56,7 @@ describe('SessionListComponent', () => {
 
             component.sessions = [{
                 id: 1,
-                name: "Angular for dummies",
+                name: 'Angular for dummies',
                 presenter: 'Juanito banana',
                 duration: 1,
                 level: 'Beginner',
@@ -71,13 +71,13 @@ describe('SessionListComponent', () => {
             component.ngOnChanges();
             fixture.detectChanges();
 
-            //Option A
-            expect(element.querySelector("[well-title]").textContent)
+            // Option A
+            expect(element.querySelector('[well-title]').textContent)
                 .toContain('Angular for dummies');
 
-            //Option B
+            // Option B
             // expect(debugEl.query(By.css('[well-title]')).nativeElement.textContent).toContain('Angular for dummies');
-        })
+        });
 
     });
 

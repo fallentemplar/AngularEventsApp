@@ -15,7 +15,7 @@ export class VoterService {
         session.voters.push(voterName);
 
         const url = `/api/events/${eventId}/sessions/${session.id}/voters/${voterName}`;
-        const options = { headers: new HttpHeaders({ "Content-Type": "application/json" }) };
+        const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
         this.http.post(url, {}, options).pipe(catchError(this.handleError('addVoter'))).subscribe();
     }
 
@@ -34,6 +34,6 @@ export class VoterService {
         return (error: any): Observable<T> => {
             console.error(error);
             return of(result as T);
-        }
+        };
     }
 }

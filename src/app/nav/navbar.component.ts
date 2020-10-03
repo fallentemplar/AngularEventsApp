@@ -12,8 +12,8 @@ import { AuthService } from '../user';
 })
 export class NavBarComponent implements OnInit {
 
-    searchTerm: string = "";
-    foundSessions: ISession[]
+    searchTerm = '';
+    foundSessions: ISession[];
     availableEvents: IEvent[];
 
     constructor(public auth: AuthService, private eventService: EventService, private route: ActivatedRoute) {
@@ -33,6 +33,6 @@ export class NavBarComponent implements OnInit {
     getEventList() {
         this.eventService.getEvents().subscribe(events => {
             this.availableEvents = events;
-        })
+        });
     }
 }

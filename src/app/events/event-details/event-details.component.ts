@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IEvent, ISession } from '../shared/event.model';
-import { EventService } from '../shared/event.service'
-import { ActivatedRoute, Params, Router } from '@angular/router'
+import { EventService } from '../shared/event.service';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
-    //No selector because it won't be a child component    
+    // No selector because it won't be a child component
     templateUrl: './event-details.component.html',
     styleUrls: [
         './event-details.component.css'
@@ -12,10 +12,10 @@ import { ActivatedRoute, Params, Router } from '@angular/router'
 })
 export class EventDetailsComponent implements OnInit {
 
-    event: IEvent
-    addMode: boolean
-    filterBy: string = 'all';
-    sortBy: string = 'votes';
+    event: IEvent;
+    addMode: boolean;
+    filterBy = 'all';
+    sortBy = 'votes';
 
     constructor(private eventService: EventService, private router: Router, private route: ActivatedRoute) {
 
@@ -23,14 +23,14 @@ export class EventDetailsComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.data.forEach((data: Params) => {
-            this.event = data['event'];
+            this.event = data.event;
             this.addMode = false;
         });
     }
 
 
     addSession(): void {
-        this.addMode = true
+        this.addMode = true;
     }
 
     saveNewSession(session: ISession) {

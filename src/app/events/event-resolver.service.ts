@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve } from '@angular/router'
+import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { EventService } from './shared/event.service';
 
 @Injectable()
@@ -10,6 +10,6 @@ export class EventResolver implements Resolve<any>{
     }
 
     resolve(route: ActivatedRouteSnapshot) {
-        return this.eventService.getEvent(Number(route.params['id']));
+        return this.eventService.getEvent(Number(route.params.id));
     }
 }

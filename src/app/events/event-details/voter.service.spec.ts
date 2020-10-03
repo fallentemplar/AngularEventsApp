@@ -1,12 +1,12 @@
 import { HttpHeaders } from '@angular/common/http';
 import { of } from 'rxjs';
 import { ISession } from '../shared';
-import { VoterService } from "./voter.service"
+import { VoterService } from './voter.service';
 
-//Unit testing (isolated) services
+// Unit testing (isolated) services
 
 describe('VoterService', () => {
-    let voterService: VoterService
+    let voterService: VoterService;
     let mockHttp;
     beforeEach(() => {
         mockHttp = jasmine.createSpyObj('mockHttp', ['delete', 'post']);
@@ -14,33 +14,33 @@ describe('VoterService', () => {
     });
     describe('deleteVoter', () => {
         it('should remove the voter from the list of voters', () => {
-            let session = { id: 6, voters: ["Juan", "Pedro", "Benito"] };
+            const session = { id: 6, voters: ['Juan', 'Pedro', 'Benito'] };
             mockHttp.delete.and.returnValue(of(false));
 
-            voterService.deleteVoter(3, <ISession>session, "Juan");
+            voterService.deleteVoter(3, session as ISession, 'Juan');
 
             expect(session.voters.length).toBe(2);
-            expect(session.voters[0]).toBe("Pedro");
-        })
+            expect(session.voters[0]).toBe('Pedro');
+        });
 
         it('should call http.delete with the right URL', () => {
-            let session = { id: 6, voters: ["Juan", "Pedro", "Benito"] };
+            const session = { id: 6, voters: ['Juan', 'Pedro', 'Benito'] };
             mockHttp.delete.and.returnValue(of(false));
 
-            voterService.deleteVoter(3, <ISession>session, "Juan");
+            voterService.deleteVoter(3, session as ISession, 'Juan');
 
-            expect(mockHttp.delete).toHaveBeenCalledWith("/api/events/3/sessions/6/voters/Juan")
-        })
+            expect(mockHttp.delete).toHaveBeenCalledWith('/api/events/3/sessions/6/voters/Juan');
+        });
     });
 
     describe('addVoter', () => {
         it('it should call http.get with the right URL', () => {
-            let session = { id: 6, voters: ["Juan", "Pedro", "Benito"] };
+            const session = { id: 6, voters: ['Juan', 'Pedro', 'Benito'] };
             mockHttp.post.and.returnValue(of(false));
 
-            voterService.addVoter(3, <ISession>session, "Rodrigo");
+            voterService.addVoter(3, session as ISession, 'Rodrigo');
 
-            expect(mockHttp.post).toHaveBeenCalledWith("/api/events/3/sessions/6/voters/Rodrigo", {}, jasmine.any(Object));
+            expect(mockHttp.post).toHaveBeenCalledWith('/api/events/3/sessions/6/voters/Rodrigo', {}, jasmine.any(Object));
         });
     });
-})
+});

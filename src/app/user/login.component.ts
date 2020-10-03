@@ -21,19 +21,21 @@ export class LoginComponent {
     constructor(private authService: AuthService, private router: Router) {
 
     }
-    //hardcoded user: johnpapa pass: any password works
-    login(formValues) {
+    // hardcoded user: johnpapa pass: any password works
+    login(formValues): void {
         this.authService.loginUser(formValues.userName, formValues.password).subscribe(response => {
-            if (response)
-                this.router.navigate(["/events"]);
-            else
+            if (response) {
+                this.router.navigate(['/events']);
+            }
+            else {
                 this.loginInvalid = true;
+            }
         });
 
     }
 
-    cancel() {
-        this.router.navigate(["/events"]);
+    cancel(): void {
+        this.router.navigate(['/events']);
     }
 
 }

@@ -6,26 +6,26 @@ import { IUser } from './user.model';
 
 @Injectable()
 export class AuthService {
-    currentUser: IUser
+    currentUser: IUser;
 
     constructor(private http: HttpClient) { }
 
     loginUser(userName: string, password: string) {
-        const loginInfo = { username: userName, password: password };
+        const loginInfo = { username: userName, password };
         const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
         return this.http.post('/api/login', loginInfo, options)
             .pipe(tap(data => {
-                this.currentUser = <IUser>data['user'];
+                this.currentUser = (data.user as IUser);
             }))
-            .pipe(catchError(err => { return of(false) }));
+            .pipe(catchError(err => of(false)));
     }
 
     logout(): Observable<object> {
         this.currentUser = undefined;
 
         const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-        return this.http.post('/api/logout', {}, options)
+        return this.http.post('/api/logout', {}, options);
     }
 
     isAuthenticated(): boolean {
@@ -35,15 +35,16 @@ export class AuthService {
     checkAuthenticationStatus() {
         this.http.get('/api/currentIdentity')
             .pipe(tap(data => {
-                if (data instanceof Object)
-                    this.currentUser = <IUser>data;
+                if (data instanceof Object) {
+                    this.currentUser = (data as IUser);
+                }
             }))
             .subscribe();
     }
 
     updateCurrentUser(firstName: string, lastName: string): Observable<object> {
         this.currentUser.firstName = firstName;
-        this.currentUser.lastName = lastName
+        this.currentUser.lastName = lastName;
 
         const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
 
