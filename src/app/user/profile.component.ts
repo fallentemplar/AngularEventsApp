@@ -34,8 +34,9 @@ export class ProfileComponent implements OnInit {
     if (this.profileForm.invalid)
       return
 
-    this.auth.updateCurrentUser(formValues.firstName, formValues.lastName);
-    this.toastr.success("Data updated successfuly");
+    this.auth.updateCurrentUser(formValues.firstName, formValues.lastName).subscribe(() => {
+      this.toastr.success("Data updated successfuly");
+    });
   }
 
   cancel(): void {
