@@ -22,6 +22,13 @@ export class AuthService {
             .pipe(catchError(err => { return of(false) }));
     }
 
+    logout(): Observable<object> {
+        this.currentUser = undefined;
+
+        const options = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+        return this.http.post('/api/logout', {}, options)
+    }
+
     isAuthenticated(): boolean {
         return !!this.currentUser;
     }
