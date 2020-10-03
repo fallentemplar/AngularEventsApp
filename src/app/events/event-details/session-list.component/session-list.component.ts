@@ -20,7 +20,7 @@ export class SessionListComponent implements OnChanges {
 
     constructor(public auth: AuthService, private voterService: VoterService) { }
 
-    ngOnChanges(changes: SimpleChanges): void {
+    ngOnChanges(): void {
         if (this.sessions) {
             this.filterSessions(this.filterBy)
             if (this.sortBy === 'name')
